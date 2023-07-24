@@ -25,3 +25,7 @@ A fun hologram of the Pokemon Castform that tells the weather
     -  https://www.professorlotus.com/Sprites/Castform_Sunny.gif
     -  https://www.professorlotus.com/Sprites/Castform_Rainy.gif
     -  https://www.professorlotus.com/Sprites/Castform_Snowy.gif
+ 
+# Questions? Contact us! :)
+- a.nguyen31@berkeley.edu
+- danielduan@berkeley.edu
