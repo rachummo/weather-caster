@@ -7,7 +7,11 @@ A fun hologram of the Pokemon Castform that tells the weather
 - 3.5" LCD touchscreen (480x360 px)
 - Glass jar w/ ~3.5" base from Daiso
 - Shortened polycarbonate clear phone case
+- 5V 2.5A RPi Power supply
 - (OPTIONAL) 3D-printed case to hold Raspberry Pi + jar
+    * Links to Tinkercad Models:
+    * https://www.tinkercad.com/things/1XWbT6VAW30?sharecode=Zlo2PTXVMaqQa8J20qgEt_2FyEbR_Sy8O03wTg1A9MA
+    * https://www.tinkercad.com/things/1RlSvS7DXkY?sharecode=fQ6fuzBaudWss8r9Mwbiiu-d_0Z_Od5JimcAVfakRfQ
 
 # How it works
 - ....
