@@ -3,9 +3,11 @@ A fun hologram of the Pokemon Castform that tells the weather
 
 # Equipment
 - Raspberry Pi 3b
-- 3.5" LCD Touchscreen (480x360 px)
-- Glass Jar w/ ~3.5" base from Daiso
-- Shortened Polycarbonate Clear Phone Case
+- 32 GB microSD card (any size should work)
+- 3.5" LCD touchscreen (480x360 px)
+- Glass jar w/ ~3.5" base from Daiso
+- Shortened polycarbonate clear phone case
+- (OPTIONAL) 3D-printed case to hold Raspberry Pi + jar
 
 # How it works
 - ....
