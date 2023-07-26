@@ -23,7 +23,7 @@ A fun hologram of the Pokemon Castform that tells the weather
 
 # Credits
 - 📢 HEAVILY INSPIRED BY @jme.nelsn on TikTok
-     * Link to specific vid: https://www.tiktok.com/@jme.nelsn/video/7203945483612458241?is_from_webapp=1&sender_device=pc&web_id=7260185253780407850 
+     * Link to specific vid: https://www.tiktok.com/@jme.nelsn/video/7203945483612458241 
 - https://www.professorlotus.com/ (Barelysuper Pokedex): Contains resources for HD Pokemons' idle animation GIFs
     -  https://www.professorlotus.com/Sprites/Castform.gif
     -  https://www.professorlotus.com/Sprites/Castform_Sunny.gif
