@@ -1,4 +1,4 @@
-# weather-caster 
+# weather-caster ☁️
 A fun hologram of the Pokemon Castform that tells the weather
 
 # Equipment
@@ -13,18 +13,23 @@ A fun hologram of the Pokemon Castform that tells the weather
     * Links to Tinkercad Models:
     * https://www.tinkercad.com/things/1XWbT6VAW30?sharecode=Zlo2PTXVMaqQa8J20qgEt_2FyEbR_Sy8O03wTg1A9MA
     * https://www.tinkercad.com/things/1RlSvS7DXkY?sharecode=fQ6fuzBaudWss8r9Mwbiiu-d_0Z_Od5JimcAVfakRfQ
- 
- 
 
 # How it works
-- ....
+- Utilizes Pepper's Ghost illusion to display a projected hologram of Castform
+     * Read more about Pepper's Ghost here: https://www.artofplay.com/blogs/stories/spectral-illusions-the-peppers-ghost-effect-and-how-it-works
+- HTML + Javascript files display Castform and dynamically changes its form according to real-time weather data retrieved from OpenWeatherMap API
+- Deployed this local site on Raspberry Pi, running in fullscreen mode of Chromium browser
+
 
 # Credits
+- 📢 HEAVILY INSPIRED BY @jme.nelsn on TikTok
+     * Link to specific vid: https://www.tiktok.com/@jme.nelsn/video/7203945483612458241?is_from_webapp=1&sender_device=pc&web_id=7260185253780407850 
 - https://www.professorlotus.com/ (Barelysuper Pokedex): Contains resources for HD Pokemons' idle animation GIFs
     -  https://www.professorlotus.com/Sprites/Castform.gif
     -  https://www.professorlotus.com/Sprites/Castform_Sunny.gif
     -  https://www.professorlotus.com/Sprites/Castform_Rainy.gif
     -  https://www.professorlotus.com/Sprites/Castform_Snowy.gif
+- OpenWeatherMap API (Current Weather Data): API reporting current weather data
  
 # Questions? Contact us! :)
 - a.nguyen31@berkeley.edu
