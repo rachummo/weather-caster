@@ -84,8 +84,11 @@ async function checkTime() {
    
    // We want to start dimming at ie. 12 am
    var nightTime = new Date();
-   nightTime.setDate(nightTime.getDate() + 1);
-   nightTime.setHours(0, 0, 0);
+   //nightTime.setDate(nightTime.getDate() + 1);
+   //nightTime.setHours(0, 0, 0);
+   
+   // begin dimming at 10 pm (early)
+   nightTime.setHours(22, 0, 0);
    
    // We want to start raising brightness at ie. 6 am
    var morningTime = new Date();
