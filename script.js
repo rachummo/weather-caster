@@ -18,6 +18,11 @@ var currWeather = 'dummy';
 // Change Castform's form based on the current weather
  function changeCastform(newWeather) {
       if (newWeather != currWeather) {
+         if (newWeather == 'normal') {
+            document.getElementById('curr-castform').style.width = 55%;
+         } else {
+            document.getElementById('curr-castform').style.width = 65%;
+         }
          document.getElementById('curr-castform').src = castformForms[newWeather];
          currWeather = newWeather;
       }
