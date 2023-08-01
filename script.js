@@ -19,9 +19,9 @@ var currWeather = 'dummy';
  function changeCastform(newWeather) {
       if (newWeather != currWeather) {
          if (newWeather == 'normal') {
-            document.getElementById('curr-castform').style.width = '25%';
+            document.getElementById('curr-castform').style.width = '45%';
          } else {
-            document.getElementById('curr-castform').style.width = '15%';
+            document.getElementById('curr-castform').style.width = '50%';
          }
          document.getElementById('curr-castform').src = castformForms[newWeather];
          currWeather = newWeather;
@@ -62,10 +62,13 @@ function changeBrightness(initialBright) {
    // Night-time -> dim display
    if (initialBright == 1) {
       var brightnessFactor = -0.01;
+      document.getElementById('curr-castform').style.filter = "brightness(" + 0.99 + ")";
    // Dawn/morning -> brighten display
    } else {
       var brightnessFactor = 0.01;
+      document.getElementById('curr-castform').style.filter = "brightness(" + 0.01 + ")";
    }
+   
    var currBright = initialBright;
    var interval = setInterval(function () {
       currBright += brightnessFactor;
@@ -95,23 +98,23 @@ async function checkTime() {
    // begin dimming at 10 pm (early)
    nightTime.setHours(22, 0, 0);
    
-   // We want to start raising brightness at ie. 6 am
+   // We want to start raising brightness at 5 am
    var morningTime = new Date();
    morningTime.setDate(morningTime.getDate() + 1);
-   morningTime.setHours(6, 0, 0);
+   morningTime.setHours(5, 0, 0);
       
    // Find number of ms until it's night-time and morning time
    var untilNight = nightTime - currTime;
    var untilDawn = morningTime - currTime;
       
    // Wait x number of ms to run changeBrightness for the first time (night and morning versions)
-   console.log('Waiting ' + untilNight + ' miliseconds until 12 AM');
+   console.log('Waiting ' + untilNight + ' miliseconds until 10 PM...');
    await sleep(untilNight);
    changeBrightness(1);
    // Begin running changeBrightnesss at night every 24 hrs
    setInterval(changeBrightness, 1000 * 60 * 60 * 24, 1);
    
-   console.log('Waiting ' + untilDawn + ' miliseconds until 6 AM');
+   console.log('Waiting ' + untilDawn + ' miliseconds until 5 AM...');
    await sleep(untilDawn);
    changeBrightness(0);
    // Begin running changeBrightnesss at morning every 24 hrs
