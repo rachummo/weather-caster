@@ -48,7 +48,7 @@ async function checkWeather(cityID) {
       else if (temp > 65) {
          changeCastform('sunny');
       }
-      else if (temp < 55) {
+      else if (temp < 60) {
          changeCastform('cloudy');
       } else {
          changeCastform('normal')
