@@ -6,7 +6,7 @@ A fun hologram of the Pokemon Castform that tells the weather
 - 32 GB microSD card (any size should work)
 - 3.5" LCD touchscreen (480x360 px)
 - Glass jar w/ ~3.5" diameter base from Daiso
-- Shortened polycarbonate clear phone case
+- Some clear reflective plastic (~1 or 2 mm thick). We found that polyvinyl chloride and clear polycarbonate phone cases (need to cut to fit) worked.
 - 5V 2.5A RPi Power supply
 - Peripherals: keyboard, mouse, monitor
 - (OPTIONAL) 3D-printed case to hold Raspberry Pi + jar
