@@ -7,7 +7,7 @@ var castformForms = {
 };
 
 // Global vars
-var cityID = 5392427;
+var cityID = 5327455;
 var updateFreq = 1000 * 60 * 15;
 var brightFreq = 1000 * 60;
 var currWeather = 'dummy';
@@ -19,9 +19,11 @@ function changeCastform(newWeather) {
   if (newWeather != currWeather) {
     if (newWeather == 'normal') {
       document.getElementById('curr-castform').style.width = '45%';
+      
     } else {
       document.getElementById('curr-castform').style.width = '50%';
     }
+    document.getElementById('curr-castform').style.bottom = '400px';
     document.getElementById('curr-castform').src = castformForms[newWeather];
     currWeather = newWeather;
   }
