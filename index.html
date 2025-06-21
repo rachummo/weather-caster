@@ -2,32 +2,49 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="data:,">
 <style>
        body {
           background:black;
+          margin: 0;
+          padding: 0;
+          width: 480px;
+          height: 320px;
+          position: fixed;
           overflow:hidden;
        }
 
-       .center {
-      height: 100vh;
-      width: 100vw;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+       .container {
+         height: 320px;
+         width: 480px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         overflow: visible;
        }
 
-       img {
-      width: 60%;
-      height: auto;
-      transform: rotate(270deg);
+       #curr-castform {
+         max-width: 100%;
+         max-height: 100%;
+         transform: 
+            translate(-50%, -50%)
+            rotate(270deg);
+         transform-origin: center;
+         object-fit: contain;
+         position: absolute;
+         top: 50%;
+         left: 50%;
        }
 
 </style>
 </head>
 <body>
-<div class="center">
-<img src= "https://www.professorlotus.com/Sprites/Castform.gif" id="curr-castform">
-</div>
-<script src="script.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <div class="container">
+      <img src= "castform-gifs/castform-3d-rainy.gif" 
+         id="curr-castform" 
+         alt="castform">
+   </div>
+
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script src="script.js"></script>
 </body>

@@ -1,42 +1,37 @@
+const $castform = $('#curr-castform');
+
 // GIFs of all castform's forms
-var castformForms = {
-  sunny: 'https://www.professorlotus.com/Sprites/Castform_Sunny.gif',
-  rainy: 'https://www.professorlotus.com/Sprites/Castform_Rainy.gif',
-  cloudy: 'https://www.professorlotus.com/Sprites/Castform_Snowy.gif',
-  normal: 'https://www.professorlotus.com/Sprites/Castform.gif',
+const castformForms = {
+  sunny: ['castform-gifs/castform-3d-sunny.gif', 'castform-gifs/castform-bw2-sunny.gif'],
+  rainy: ['castform-gifs/castform-3d-rainy.gif', 'castform-gifs/castform-bw2-rainy.gif'],
+  snowy: ['castform-gifs/castform-3d-snowy.gif', 'castform-gifs/castform-bw2-snowy.gif'],
+  normal: ['castform-gifs/castform-3d.gif', 'castform-gifs/castform-bw2.gif']
 };
 
-// Global vars
-var cityID = 5327455;
-var updateFreq = 1000 * 60 * 15;
-var brightFreq = 1000 * 60;
-var currWeather = 'dummy';
+// Configuration values
+const cityID = 5327455; // Belmont
+const updateFreq = 1000 * 60 * 15; // check weather every 15 minutes
+const key = 'eb473f77c86ef6f4d94c3605fec1dd3b';
+const apiURL = 'https://api.openweathermap.org/data/2.5/weather?id=' + cityID + '&units=imperial' + '&appid=' + key;
+var currWeather = 'rainy'; // default weather
 
 // -------------------------------------              CHANGING CASTFORM              -------------------------------------
 
 // Change Castform's form based on the current weather
 function changeCastform(newWeather) {
   if (newWeather != currWeather) {
-    if (newWeather == 'normal') {
-      document.getElementById('curr-castform').style.width = '45%';
-      
-    } else {
-      document.getElementById('curr-castform').style.width = '50%';
-    }
-    document.getElementById('curr-castform').style.bottom = '400px';
-    document.getElementById('curr-castform').src = castformForms[newWeather];
+    $castform.attr('src', castformForms[newWeather][Math.random() > 0.4 ? 0 : 1]);
     currWeather = newWeather;
+    console.log(`Transformed to ${newWeather} form!`);
   }
 }
 
 // Using API, check the current weather in prep of changing Castform's appearance
-async function checkWeather(cityID) {
-  var key = 'eb473f77c86ef6f4d94c3605fec1dd3b';
-  var apiURL = 'https://api.openweathermap.org/data/2.5/weather?id=';
+async function checkWeather() {
 
   // API call
   const response = await fetch(
-    apiURL + cityID + '&units=imperial' + '&appid=' + key
+    apiURL
   );
 
   // API response (indexable dict)
@@ -54,7 +49,7 @@ async function checkWeather(cityID) {
   } else if (temp > 65) {
     changeCastform('sunny');
   } else if (temp < 60) {
-    changeCastform('cloudy');
+    changeCastform('snowy');
   } else {
     changeCastform('normal');
   }
@@ -62,47 +57,38 @@ async function checkWeather(cityID) {
 
 // -------------------------------------              TIME-BASED BRIGHTNESS SETTING              -------------------------------------
 
-// Sleep functionality for checkTime()
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-// Check whether it is nightime or morning time
-async function checkTime() {
+// Schedule everyday dimming and brightening of Castform
+function scheduleOpacityChange() {
   // Rpi bootup, loads html and script, could be any time
   var currTime = new Date();
 
-  // We want to start dimming at ie. 12 am
+  // Set dim time (10 PM)
   var nightTime = new Date();
+  nightTime.setHours(22, 0, 0);
+  if (nightTime < currTime) {
+    nightTime.setDate(nightTime.getDate() + 1);
+  }
 
-  // begin dimming at 10 pm (early)
-  nightTime.setHours(14, 4, 0);
-
-  // We want to start raising brightness at 5 am
+  // Set brighten time (5 AM)
   var morningTime = new Date();
-  morningTime.setDate(morningTime.getDate() + 1);
   morningTime.setHours(5, 0, 0);
+  if (morningTime < currTime) {
+    morningTime.setDate(morningTime.getDate() + 1);
+  }
 
-  // Find number of ms until it's night-time and morning time
-  var untilNight = nightTime - currTime;
-  var untilDawn = morningTime - currTime;
+// Gradual dimming at night for 1 hr (in ms)
+// Schedule for today specifically and then everyday
+  setTimeout(() => {
+    $castform.fadeTo(1000 * 60 * 60, 0);
+    setInterval(() => $castform.fadeTo(1000 * 60 * 60, 0), 86400000);
+    }, nightTime - currTime);
 
-  // Wait x number of ms to run changeBrightness for the first time (night and morning versions)
-  console.log('Waiting ' + untilNight / 1000 / 60 + ' mins until 10 PM...');
-  await sleep(untilNight);
-  // Begin running changeBrightnesss at night every 24 hrs
-  $(document.getElementById('curr-castform')).fadeOut(1000*60*30);
-  setInterval(() => { 
-     $(document.getElementById('curr-castform')).fadeOut(100); 
-  }, 1000 * 60 * 60 * 24);
+// Gradual brightening in morning for 1 (in ms)
+  setTimeout(() => {
+    $castform.fadeTo(1000 * 60 * 60, 1);
+    setInterval(() => $castform.fadeTo(1000 * 60 * 60, 1), 86400000);
+  }, morningTime - currTime);
 
-  console.log('Waiting ' + untilDawn / 1000 / 60 + ' mins until 5 AM...');
-  await sleep(untilDawn);
-  $(document.getElementById('curr-castform')).fadeIn(1000*60*30);
-  // Begin running changeBrightnesss at morning every 24 hrs
-  setInterval(() => {
-    $(document.getElementById('curr-castform')).fadeIn(100); 
-  }, 1000 * 60 * 60 * 24);
 }
 
 // -----------------------------------                STARTUP FUNCTIONS                -----------------------------------
@@ -110,6 +96,6 @@ async function checkTime() {
 window.onload = () => {
   console.log("Castform: 'hello!'");
   checkWeather(cityID);
-  setInterval(checkWeather, updateFreq, cityID);
-  checkTime();
+  setInterval(checkWeather, updateFreq);
+  scheduleOpacityChange();
 };
